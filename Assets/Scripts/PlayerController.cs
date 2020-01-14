@@ -5,27 +5,48 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public Rigidbody2D rb;
-    
+    public Animator anim; 
     public float speed;
+    public float jumpForce;
+    
     
     void Start()
     {
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Movement();
     }
 
     void Movement()
     {
-        float horizontalmove;
-        horizontalmove = Input.GetAxis("Horizontal");
+        float horizontalMove = Input.GetAxis("Horizontal");
+        float faceDirection = Input.GetAxisRaw("Horizontal");
 
-        if (horizontalmove != 0)
+        //角色移动
+        if (horizontalMove != 0)
         {
-            rb.velocity = new Vector2(horizontalmove*speed, rb.velocity.y);
+            rb.velocity = new Vector2(horizontalMove*speed*Time.fixedDeltaTime, rb.velocity.y);
+            anim.SetFloat("Running", Mathf.Abs(horizontalMove));
         }
+
+        //角色转向
+        if (faceDirection != 0)
+        {
+            transform.localScale = new Vector3(faceDirection, 1, 1);
+        }
+
+        //角色跳跃
+        if (Input.GetButtonDown("Jump"))
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce*Time.fixedDeltaTime);
+            anim.SetBool("Jumping", true);
+        }
+    }
+
+    void SwitchAnimation()
+    {
+         
     }
 }
