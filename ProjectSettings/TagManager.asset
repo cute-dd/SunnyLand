@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Cherry
   - Gem
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -46,6 +47,15 @@ TagManager:
   - name: BackGround
     uniqueID: 2569877623
     locked: 0
+  - name: Environment
+    uniqueID: 1197036259
+    locked: 0
+  - name: Player
+    uniqueID: 906992013
+    locked: 0
   - name: FrontGround
     uniqueID: 1555080751
+    locked: 0
+  - name: Ground
+    uniqueID: 3106375293
     locked: 0

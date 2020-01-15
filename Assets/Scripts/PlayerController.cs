@@ -2,17 +2,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
     private Animator anim;
     public Collider2D coll;
+    public Text cherryNum, gemNum;
     public LayerMask ground;
     public float speed;
     public float jumpForce;
-    public int cherry, gem;
-    
+    public int cherry;
+    public int gem;
+
+    private bool _isHurt;
     
     void Start()
     {
@@ -22,7 +26,10 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        Movement();
+        if (!_isHurt)
+        {
+            Movement();   
+        }
         SwitchAnimation();
     }
 
@@ -48,7 +55,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //角色跳跃
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && coll.IsTouchingLayers(ground))
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce*Time.fixedDeltaTime);
             anim.SetBool("Jumping", true);
@@ -56,10 +63,11 @@ public class PlayerController : MonoBehaviour
     }
 
     /// <summary>
-    /// 动作切换
+    /// 动画切换
     /// </summary>
     void SwitchAnimation()
     {
+        //跳跃动画
         if (anim.GetBool("Jumping"))
         {
             if (rb.velocity.y < 0)
@@ -71,20 +79,59 @@ public class PlayerController : MonoBehaviour
         {
             anim.SetBool("Falling", false);
         }
+
+        //受伤动画
+        if (_isHurt)
+        {
+            anim.SetBool("Hurt", true);
+            anim.SetFloat("Running", 0f);
+            if (Mathf.Abs(rb.velocity.x) < 0.1f)
+            {
+                anim.SetBool("Hurt", false);
+                _isHurt = false;
+            }
+        }
     }
 
+    //收集物品
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Cherry"))
         {
             Destroy(other.gameObject);
-            cherry += 1;
+            cherry ++;
+            cherryNum.text = cherry.ToString();
         }
 
         if (other.CompareTag("Gem"))
         {
             Destroy(other.gameObject);
-            gem += 1;
+            gem ++;
+            gemNum.text = gem.ToString();
+        }
+    }
+    
+    //消灭敌人
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            anim.SetBool("Falling", false);
+            if (anim.GetBool("Falling"))
+            {
+                Destroy(other.gameObject);
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce * Time.fixedDeltaTime);
+                anim.SetBool("Jumping", true);
+            }else if (other.transform.position.x > transform.position.x)
+            {
+                rb.velocity = new Vector2(-10, rb.velocity.y);
+                _isHurt = true;
+            }
+            else if (other.transform.position.x < transform.position.x)
+            { 
+                rb.velocity = new Vector2(10, rb.velocity.y);
+                _isHurt = true;
+            }
         }
     }
 }
