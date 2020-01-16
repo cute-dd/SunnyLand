@@ -13,6 +13,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/EnemyController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/EnemyEagleController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CameraController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/EnemyForgContorller.cs" root0="FORCE_HIGHLIGHTING" />
@@ -23,9 +24,10 @@
       <list>
         <option value="$PROJECT_DIR$/Assets/Scripts/FinalMoveMent.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CameraController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/EnemyEagleController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/EnemyForgContorller.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/EnemyEagleController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/EnemyController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" />
       </list>
     </option>
   </component>
@@ -158,6 +160,10 @@
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
     <state width="1877" height="188" key="GridCell.Tab.3.right/0.40.1920.1040@0.40.1920.1040" timestamp="1578840271414" />
+    <state x="640" y="360" key="Performance.Activity.Monitor" timestamp="1579184828882">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="640" y="360" key="Performance.Activity.Monitor/0.0.1920.1040@0.0.1920.1040" timestamp="1579184828882" />
     <state x="461" y="162" key="SettingsEditor" timestamp="1579078374086">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

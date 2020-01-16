@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Animator anim;
     public Collider2D coll;
+    public AudioSource jumpAudio, hurtAudio, rewardAudio;
     public Text cherryNum, gemNum;
     public LayerMask ground;
     public float speed;
@@ -58,6 +59,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Jump") && coll.IsTouchingLayers(ground))
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce*Time.fixedDeltaTime);
+            jumpAudio.Play();
             anim.SetBool("Jumping", true);
         }
     }
@@ -104,6 +106,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Cherry"))
         {
+            rewardAudio.Play();
             Destroy(other.gameObject);
             cherry ++;
             cherryNum.text = cherry.ToString();
@@ -111,6 +114,7 @@ public class PlayerController : MonoBehaviour
 
         if (other.CompareTag("Gem"))
         {
+            rewardAudio.Play();
             Destroy(other.gameObject);
             gem ++;
             gemNum.text = gem.ToString();
@@ -122,10 +126,11 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            //anim.SetBool("Falling", false);
+            EnemyController enemy = other.gameObject.GetComponent<EnemyController>();
+            
             if (anim.GetBool("Falling"))
             {
-                Destroy(other.gameObject);
+                enemy.JumpOn();
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce * Time.fixedDeltaTime);
                 anim.SetBool("Falling", false);
                 anim.SetBool("Jumping", true);
@@ -133,11 +138,13 @@ public class PlayerController : MonoBehaviour
             {
                 rb.velocity = new Vector2(-10, rb.velocity.y);
                 _isHurt = true;
+                hurtAudio.Play();
             }
             else if (other.transform.position.x < transform.position.x)
             { 
                 rb.velocity = new Vector2(10, rb.velocity.y);
                 _isHurt = true;
+                hurtAudio.Play();
             }
         }
     }

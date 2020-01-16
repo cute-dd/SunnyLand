@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.GlobalIllumination;
 
-public class EnemyForgContorller : MonoBehaviour
+public class EnemyForgContorller : EnemyController
 {
     public float speed;
     public float jumpForce;
@@ -14,13 +14,12 @@ public class EnemyForgContorller : MonoBehaviour
     private float _leftX, _rightX;
     private Rigidbody2D _rb;
     private Collider2D _coll;
-    private Animator _anim;
     
-    void Start()
+    protected override void Start()
     { 
+        base.Start();
         _rb = GetComponent<Rigidbody2D>();
         _coll = GetComponent<Collider2D>();
-        _anim = GetComponent<Animator>();
         transform.DetachChildren();
         _leftX = leftPoint.position.x;
         _rightX = rightPoint.position.x;
@@ -30,7 +29,6 @@ public class EnemyForgContorller : MonoBehaviour
 
     void Update()
     {
-        //Movement();
         Direction();
         SwitchAnimation();
     }
@@ -67,23 +65,20 @@ public class EnemyForgContorller : MonoBehaviour
     {
         if (!_coll.IsTouchingLayers(ground))
         {
-            _anim.SetBool("Jumping", true);
+            Anim.SetBool("Jumping", true);
         }
     
-        if (_rb.velocity.y < 0.1f && _anim.GetBool("Jumping"))
+        if (_rb.velocity.y < 0.1f && Anim.GetBool("Jumping"))
         {
-            _anim.SetBool("Jumping", false);
-            _anim.SetBool("Falling", true);
+            Anim.SetBool("Jumping", false);
+            Anim.SetBool("Falling", true);
         }
     
         if (_coll.IsTouchingLayers(ground))
         {
-            _anim.SetBool("Falling", false);
+            Anim.SetBool("Falling", false);
         }
     }
 
-    void Death()
-    {
-        _anim.SetTrigger("Death");
-    }
+    
 }

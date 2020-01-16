@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyEagleController : MonoBehaviour
+public class EnemyEagleController : EnemyController
 {
     public Transform topPoint, bottomPoint;
     public float speed;
@@ -11,10 +11,10 @@ public class EnemyEagleController : MonoBehaviour
     private float _topY, _bottomY, _selfX;
     private bool _flyTop = true;
     
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         _rb = GetComponent<Rigidbody2D>();
-        
         transform.DetachChildren();
         _topY = topPoint.position.y;
         _bottomY = bottomPoint.position.y;
