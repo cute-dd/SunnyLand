@@ -67,6 +67,12 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void SwitchAnimation()
     {
+        //下落动画
+        if (rb.velocity.y < 0.1f && !coll.IsTouchingLayers(ground))
+        {
+            anim.SetBool("Falling", true);
+        }
+        
         //跳跃动画
         if (anim.GetBool("Jumping"))
         {
@@ -116,11 +122,12 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            anim.SetBool("Falling", false);
+            //anim.SetBool("Falling", false);
             if (anim.GetBool("Falling"))
             {
                 Destroy(other.gameObject);
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce * Time.fixedDeltaTime);
+                anim.SetBool("Falling", false);
                 anim.SetBool("Jumping", true);
             }else if (other.transform.position.x > transform.position.x)
             {
