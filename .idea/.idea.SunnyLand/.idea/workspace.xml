@@ -16,6 +16,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/EnemyController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/EnemyEagleController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CameraController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/EnterDiaiog.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/EnemyForgContorller.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/FinalMoveMent.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -27,6 +28,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/EnemyForgContorller.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/EnemyEagleController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/EnemyController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/EnterDiaiog.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" />
       </list>
     </option>
@@ -164,10 +166,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="640" y="360" key="Performance.Activity.Monitor/0.0.1920.1040@0.0.1920.1040" timestamp="1579184828882" />
-    <state x="461" y="162" key="SettingsEditor" timestamp="1579078374086">
+    <state x="461" y="162" key="SettingsEditor" timestamp="1579256839674">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1579078374086" />
+    <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1579256839674" />
     <state x="461" y="202" key="SettingsEditor/0.40.1920.1040@0.40.1920.1040" timestamp="1578973156674" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1579078761576">
       <screen x="0" y="0" width="1920" height="1040" />

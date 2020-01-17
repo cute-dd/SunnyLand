@@ -5,6 +5,29 @@
     <e p="C:\Users\Administrator\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_.19.00" t="ExcludeRecursive" />
     <e p="F:\Dream\Game\SunnyLand" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="CasualGameBGM05" t="Include">
+          <e p="ReadMe.txt" t="Include" />
+        </e>
+        <e p="Scripts" t="Include">
+          <e p="CameraController.cs" t="Include" />
+          <e p="EnemyController.cs" t="Include" />
+          <e p="EnemyEagleController.cs" t="Include" />
+          <e p="EnemyForgContorller.cs" t="Include" />
+          <e p="FinalMoveMent.cs" t="Include" />
+          <e p="PlayerController.cs" t="Include" />
+        </e>
+        <e p="Zero Rare" t="Include">
+          <e p="Retro Sound Effects" t="Include">
+            <e p="Demo" t="Include">
+              <e p="Demo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
     </e>
   </component>
 </project>

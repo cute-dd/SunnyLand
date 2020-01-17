@@ -14,6 +14,7 @@
           <e p="EnemyController.cs" t="Include" />
           <e p="EnemyEagleController.cs" t="Include" />
           <e p="EnemyForgContorller.cs" t="Include" />
+          <e p="EnterDiaiog.cs" t="Include" />
           <e p="FinalMoveMent.cs" t="Include" />
           <e p="PlayerController.cs" t="Include" />
         </e>

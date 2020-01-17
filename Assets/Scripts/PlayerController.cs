@@ -8,9 +8,10 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
     private Animator anim;
-    public Collider2D coll;
+    public Collider2D coll, hard;
     public AudioSource jumpAudio, hurtAudio, rewardAudio;
     public Text cherryNum, gemNum;
+    public Transform cellingCheck;
     public LayerMask ground;
     public float speed;
     public float jumpForce;
@@ -32,6 +33,11 @@ public class PlayerController : MonoBehaviour
             Movement();   
         }
         SwitchAnimation();
+    }
+
+    private void Update()
+    {
+        Crouch();
     }
 
     /// <summary>
@@ -72,6 +78,7 @@ public class PlayerController : MonoBehaviour
         //下落动画
         if (rb.velocity.y < 0.1f && !coll.IsTouchingLayers(ground))
         {
+            anim.SetBool("Crouch", false);
             anim.SetBool("Falling", true);
         }
         
@@ -93,11 +100,18 @@ public class PlayerController : MonoBehaviour
         {
             anim.SetBool("Hurt", true);
             anim.SetFloat("Running", 0f);
+            anim.SetBool("Crouch", false);
             if (Mathf.Abs(rb.velocity.x) < 0.1f)
             {
                 anim.SetBool("Hurt", false);
                 _isHurt = false;
             }
+        }
+        //下蹲动画
+        if (anim.GetBool("Falling") && coll.IsTouchingLayers(ground))
+        {
+            anim.SetBool("Falling", false);
+            anim.SetBool("Crouch", true);
         }
     }
 
@@ -145,6 +159,24 @@ public class PlayerController : MonoBehaviour
                 rb.velocity = new Vector2(10, rb.velocity.y);
                 _isHurt = true;
                 hurtAudio.Play();
+            }
+        }
+    }
+
+    //下蹲
+    void Crouch()
+    {
+        if (!Physics2D.OverlapCircle(cellingCheck.position, 0.2f, ground))
+        {
+            if (Input.GetButton("Crouch"))
+            {
+                anim.SetBool("Crouch", true);
+                hard.enabled = false;
+            }
+            else if (!Input.GetButton("Crouch"))
+            {
+                anim.SetBool("Crouch", false);
+                hard.enabled = true;
             }
         }
     }
